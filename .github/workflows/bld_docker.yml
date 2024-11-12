@@ -130,7 +130,7 @@ jobs:
       - name: nasty hack to allow dynamic defaults
         id: dynamic_defaults
         run: |
-          FILE="${{ github.event.inputs.file }}"
+          FILE="${{ inputs.file }}"
           echo "default_file=${FILE:-${{ inputs.context }}/Dockerfile}" >> "$GITHUB_OUTPUT"
 
       - name: show the dynamic defaults
