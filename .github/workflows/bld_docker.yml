@@ -96,7 +96,7 @@ jobs:
           default_branch: ${{ github.event.repository.default_branch }}
           ref: ${{ inputs.ref }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ steps.ref.outputs.ref }}
           # checkout some history so we can scan commits for bump messages
@@ -110,8 +110,8 @@ jobs:
           version_tag: ${{ inputs.version_tag }}
           bump: ${{ inputs.bump }}
 
-      - uses: docker/setup-buildx-action@v2
-      - uses: actions/cache@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
           # each cache needs a unique key for the job
@@ -121,7 +121,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
       - name: Login to private registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ secrets.DOCKER_REG_PRIVATE }}
           username: ${{ secrets.DOCKER_USER }}
@@ -137,7 +137,7 @@ jobs:
         run: |
           echo ${{ steps.dynamic_defaults.outputs.default_file }}
 
-      - uses: docker/build-push-action@v3
+      - uses: docker/build-push-action@v6
         with:
           push: true
           tags: ${{ secrets.DOCKER_REG_PRIVATE }}/${{ inputs.docker_name}}:${{ steps.version.outputs.version_tag_numeric }}
