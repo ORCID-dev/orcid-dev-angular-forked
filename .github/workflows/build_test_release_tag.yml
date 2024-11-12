@@ -42,7 +42,11 @@ on:
         required: false
         default: "default_branch"
         type: string
-
+      rel_tag:
+        description: Whether to tag the code
+        type: boolean
+        required: false
+        default: true
 
 # cancel running job if another commit comes in
 concurrency:
@@ -120,6 +124,7 @@ jobs:
 
   rel_tag:
     uses: ./.github/workflows/rel_tag.yml
+    if: ${{ inputs.rel_tag }}
     needs: bld_all
     with:
       version_tag: ${{ inputs.version_tag }}
