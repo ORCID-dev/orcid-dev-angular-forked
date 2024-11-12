@@ -103,8 +103,8 @@ jobs:
       bump: ${{ inputs.bump }}
       ref: ${{ inputs.ref }}
 
-  bld_all_docker:
-    uses: ./.github/workflows/bld_all_docker.yml
+  bld_docker:
+    uses: ./.github/workflows/bld_docker.yml
     secrets: inherit # pass all secrets for uploading assets
     needs:
       - lint
