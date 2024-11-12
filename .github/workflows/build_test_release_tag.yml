@@ -70,8 +70,8 @@ jobs:
       - format_i18n
       - format_prettier
 
-  unit_tests:
-    uses: ./.github/workflows/unit_tests.yml
+  test_yarn:
+    uses: ./.github/workflows/test_yarn.yml
     needs:
       - format_i18n
       - format_prettier

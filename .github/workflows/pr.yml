@@ -17,8 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit_tests:
-    uses: ./.github/workflows/unit_tests.yml
+  test_yarn:
+    uses: ./.github/workflows/test_yarn.yml
 
   # NOTE: this is just to test
   bld_all_yarn:
