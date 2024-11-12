@@ -1,4 +1,4 @@
-name: build_test_release_tag
+name: bld_test_rel_tag
 
 on:
   workflow_call:
@@ -84,8 +84,9 @@ jobs:
       - format_prettier
 
 ##############################################################################
-  bld_all:
-    uses: ./.github/workflows/bld_all.yml
+  # uses maven to build via yarn into a war file
+  bld_mvn:
+    uses: ./.github/workflows/bld_mvn.yml
     secrets: inherit # pass all secrets for uploading assets
     needs:
       - lint
@@ -125,7 +126,7 @@ jobs:
   rel_tag:
     uses: ./.github/workflows/rel_tag.yml
     if: ${{ inputs.rel_tag }}
-    needs: bld_all
+    needs: bld_mvn
     with:
       version_tag: ${{ inputs.version_tag }}
       bump: ${{ inputs.bump }}
