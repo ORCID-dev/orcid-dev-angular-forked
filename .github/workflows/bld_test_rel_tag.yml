@@ -77,8 +77,8 @@ jobs:
       - format_prettier
 
   # this is a test
-  bld_all_yarn:
-    uses: ./.github/workflows/bld_all_yarn.yml
+  bld_yarn:
+    uses: ./.github/workflows/bld_yarn.yml
     needs:
       - format_i18n
       - format_prettier
@@ -90,7 +90,7 @@ jobs:
     secrets: inherit # pass all secrets for uploading assets
     needs:
       - lint
-      - bld_all_yarn
+      - bld_yarn
       - format_i18n
       - format_prettier
     permissions:
@@ -108,7 +108,7 @@ jobs:
     secrets: inherit # pass all secrets for uploading assets
     needs:
       - lint
-      - bld_all_yarn
+      - bld_yarn
       - format_i18n
       - format_prettier
     permissions:
