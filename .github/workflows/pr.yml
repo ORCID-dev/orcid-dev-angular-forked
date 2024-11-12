@@ -21,8 +21,8 @@ jobs:
     uses: ./.github/workflows/test_yarn.yml
 
   # NOTE: this is just to test
-  bld_all_yarn:
-    uses: ./.github/workflows/bld_all_yarn.yml
+  bld_yarn:
+    uses: ./.github/workflows/bld_yarn.yml
 #   NOTE: codeql is only available on public repos or enterprise github accounts
 #   codeql:
 #     uses: ./.github/workflows/codeql.yml
