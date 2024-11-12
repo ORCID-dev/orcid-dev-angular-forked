@@ -8,7 +8,7 @@ jobs:
   format_prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # token with write permissions to protected branches
           # standard github token does not allow this
@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 'v16.x'
+          node-version: 'v20.x'
           cache: 'yarn'
       - run: yarn
 

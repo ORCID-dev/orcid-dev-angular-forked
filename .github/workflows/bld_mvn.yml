@@ -99,12 +99,6 @@ jobs:
           java-version: '11'
           cache: 'maven'
 
-# FIXME: think that maven somehow pulls this in, so never cached
-#       - name: setup node
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: 'v16.x'
-
       - name: show path
         run: |
           echo "$PATH"
