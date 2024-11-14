@@ -104,11 +104,6 @@ jobs:
             build_args: "build_env=qa"
             file: Dockerfile.build
 
-          - artifact_name: int
-            docker_name: orcid/registry/orcid-web-frontend-int
-            build_args: "build_env=int"
-            file: Dockerfile.build
-
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

@@ -28,9 +28,10 @@ jobs:
       matrix:
         include:
           - artifact_name: prod
-          - artifact_name: sandbox
-          - artifact_name: qa
-          - artifact_name: int
+# yarn build is only used as a test
+#           - artifact_name: sandbox
+#           - artifact_name: qa
+#           - artifact_name: int
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
