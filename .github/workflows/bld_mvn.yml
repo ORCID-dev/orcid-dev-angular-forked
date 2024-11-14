@@ -70,6 +70,7 @@ jobs:
           - artifact_name: int
 
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: git-checkout-ref-action
         id: ref
