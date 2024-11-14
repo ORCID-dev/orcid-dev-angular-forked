@@ -10,8 +10,12 @@ WORKDIR /build
 # copy only poms for max cachability of just dependency downloads
 COPY pom.xml .
 
-# download maven dependencies and ignore that some components will fail
-RUN mvn -T 1C --batch-mode dependency:resolve --fail-never -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+# download maven dependencies
+RUN mvn -T 1C --batch-mode \
+  -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn \
+  --file "pom.xml" \
+  --activate-profiles "${build_env}" -Dnodejs.workingDirectory=. \
+  dependency:resolve
 
 COPY ./scripts ./scripts
 # for yarn build
