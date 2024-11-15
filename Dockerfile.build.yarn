@@ -1,0 +1,20 @@
+FROM node:20.15.0-bullseye AS build
+
+ARG build_env
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN yarn install --verbose
+
+COPY . .
+
+RUN yarn build:${build_env} --verbose
+
+FROM nginx:1.26.2-alpine
+
+COPY --from=build /app/* /usr/share/nginx/html
+
+EXPOSE 80
+
