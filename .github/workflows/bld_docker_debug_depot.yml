@@ -161,6 +161,7 @@ jobs:
           context: ${{ inputs.context }}
           push: true
           build-args: ${{ matrix.build_args }}
+          file: ${{ steps.dynamic_defaults.outputs.default_file }}
           tags: ${{ secrets.DOCKER_REG_PRIVATE }}/${{ matrix.docker_name}}:${{ steps.version.outputs.version_tag_numeric }}
 
 
