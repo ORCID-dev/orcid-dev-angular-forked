@@ -92,7 +92,7 @@ jobs:
           - artifact_name: prod
             docker_name: orcid/registry/orcid-web-frontend-prod
             build_args: "build_env=prod"
-            file: Dockerfile.build
+            file: Dockerfile.build.yarn
 
     runs-on: ubuntu-latest
     # Set permissions if you're using OIDC token authentication
