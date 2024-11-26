@@ -1,5 +1,4 @@
 FROM node:20.15.0-alpine AS build
-# FROM node:20.15.0-bullseye AS build
 
 ARG build_env
 
@@ -7,7 +6,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN yarn install --verbose
+RUN yarn
 
 COPY *.json .
 
@@ -17,7 +16,7 @@ COPY scripts/ scripts/
 
 RUN apk add gettext
 
-RUN yarn build:${build_env} --verbose
+RUN yarn build:${build_env}
 
 FROM nginx:1.26.2-alpine
 
